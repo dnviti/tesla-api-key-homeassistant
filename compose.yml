@@ -1,0 +1,10 @@
+services:
+  tesla-fleet-public-key:
+    build:
+      context: ./tesla_api_key
+    container_name: tesla-fleet-public-key
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    volumes:
+      - ./local/options.json:/data/options.json:ro
