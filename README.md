@@ -30,6 +30,14 @@ Manual steps:
 
 4. Install **Tesla Fleet Public Key**.
 
+The container image is built by GitHub Actions and published to GitHub Container Registry as:
+
+```text
+ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.0
+```
+
+Home Assistant pulls this prebuilt image from the `image` setting in the add-on configuration.
+
 ## Configure
 
 During Tesla Fleet setup, Home Assistant asks you to host the public key shown in the setup flow. Paste that public key into this add-on configuration as `key_pem`.
@@ -102,4 +110,3 @@ The key should be available at:
 ```text
 http://localhost:8085/.well-known/appspecific/com.tesla.3p.public-key.pem
 ```
-

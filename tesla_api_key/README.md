@@ -2,6 +2,12 @@
 
 Serves the Tesla Fleet public key required by the [Home Assistant Tesla Fleet integration](https://www.home-assistant.io/integrations/tesla_fleet).
 
+The add-on image is built by GitHub Actions and published to GitHub Container Registry:
+
+```text
+ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.0
+```
+
 The add-on writes the configured `key_pem` value to:
 
 ```text
@@ -18,4 +24,3 @@ key_pem: |
 ```
 
 Expose this add-on through a valid HTTPS domain before completing Tesla Fleet setup.
-

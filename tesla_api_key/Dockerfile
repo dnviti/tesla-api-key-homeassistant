@@ -1,12 +1,13 @@
 FROM ghcr.io/home-assistant/base:latest
 
-ARG BUILD_VERSION
-ARG BUILD_ARCH
+ARG BUILD_VERSION=dev
 
 LABEL \
     io.hass.version="${BUILD_VERSION}" \
     io.hass.type="app" \
-    io.hass.arch="${BUILD_ARCH}"
+    io.hass.arch="aarch64|amd64|armv7" \
+    org.opencontainers.image.source="https://github.com/dnviti/tesla-api-key-homeassistant" \
+    org.opencontainers.image.description="Tesla Fleet public key Home Assistant add-on"
 
 RUN \
     apk add --no-cache nginx && \
@@ -19,4 +20,3 @@ COPY run.sh /
 RUN chmod a+x /run.sh
 
 CMD [ "/run.sh" ]
-
