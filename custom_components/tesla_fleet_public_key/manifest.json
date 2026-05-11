@@ -1,0 +1,12 @@
+{
+  "domain": "tesla_fleet_public_key",
+  "name": "Tesla Fleet Public Key",
+  "codeowners": ["@dnviti"],
+  "config_flow": true,
+  "dependencies": ["http"],
+  "documentation": "https://github.com/dnviti/tesla-api-key-homeassistant",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/dnviti/tesla-api-key-homeassistant/issues",
+  "version": "1.0.5"
+}

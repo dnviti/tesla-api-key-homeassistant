@@ -1,5 +1,5 @@
 name: Tesla Fleet Public Key
-version: "1.0.4"
+version: "1.0.5"
 slug: tesla_fleet_public_key
 description: Serve the Tesla Fleet public key and proxy other requests to Home Assistant.
 url: https://github.com/dnviti/tesla-api-key-homeassistant
@@ -10,10 +10,6 @@ arch:
 startup: services
 boot: auto
 init: false
-ports:
-  80/tcp: 8085
-ports_description:
-  80/tcp: Tesla Fleet public key HTTP endpoint
 options:
   key_pem: |
     -----BEGIN PUBLIC KEY-----

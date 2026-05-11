@@ -1,0 +1,7 @@
+{
+  "name": "Tesla Fleet Public Key",
+  "render_readme": true,
+  "domains": ["tesla_fleet_public_key"],
+  "homeassistant": "2024.8.0"
+}
+

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+
+- Remove the default host port mapping. Use the custom integration for the no-port setup.
+
 ## 1.0.4
 
 - Proxy all non-key requests to the configured Home Assistant upstream.

@@ -1,5 +1,6 @@
 key.pem
 local/
+__pycache__/
+*.pyc
 *.log
 *.tmp
-

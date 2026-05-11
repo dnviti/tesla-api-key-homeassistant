@@ -1,0 +1,37 @@
+{
+  "title": "Tesla Fleet Public Key",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tesla Fleet Public Key",
+        "description": "Paste the public key shown by the Tesla Fleet setup flow. Home Assistant will serve it from its own external URL at `/.well-known/appspecific/com.tesla.3p.public-key.pem`.",
+        "data": {
+          "key_pem": "Tesla public key PEM"
+        }
+      }
+    },
+    "error": {
+      "invalid_public_key": "Paste a valid PEM public key with BEGIN PUBLIC KEY and END PUBLIC KEY markers.",
+      "placeholder": "Replace the example placeholder with the real Tesla Fleet public key."
+    },
+    "abort": {
+      "already_configured": "Tesla Fleet Public Key is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tesla Fleet Public Key",
+        "description": "Update the public key served at `/.well-known/appspecific/com.tesla.3p.public-key.pem`.",
+        "data": {
+          "key_pem": "Tesla public key PEM"
+        }
+      }
+    },
+    "error": {
+      "invalid_public_key": "Paste a valid PEM public key with BEGIN PUBLIC KEY and END PUBLIC KEY markers.",
+      "placeholder": "Replace the example placeholder with the real Tesla Fleet public key."
+    }
+  }
+}
+
