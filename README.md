@@ -33,7 +33,7 @@ Manual steps:
 The container image is built by GitHub Actions and published to GitHub Container Registry as:
 
 ```text
-ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.0
+ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.1
 ```
 
 Home Assistant pulls this prebuilt image from the `image` setting in the add-on configuration.
@@ -52,6 +52,8 @@ key_pem: |
 ```
 
 This should be the public key shown by the Tesla Fleet integration, not the private `tesla_fleet.key` file.
+
+If Home Assistant rewrites the value as folded YAML (`key_pem: >-`) or wraps the base64 body, the add-on normalizes it back to valid PEM format when it starts.
 
 The add-on exposes HTTP port `80` from the container. By default Home Assistant maps it to host port `8085`, so the local endpoint is:
 

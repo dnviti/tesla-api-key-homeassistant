@@ -13,6 +13,8 @@ key_pem: |
   -----END PUBLIC KEY-----
 ```
 
+Folded YAML (`key_pem: >-`) and wrapped base64 are normalized back to valid PEM format at startup.
+
 After starting the add-on, verify the endpoint through the HTTPS domain you configured for Tesla:
 
 ```text
