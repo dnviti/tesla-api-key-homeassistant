@@ -5,7 +5,7 @@ ARG BUILD_VERSION=dev
 LABEL \
     io.hass.version="${BUILD_VERSION}" \
     io.hass.type="app" \
-    io.hass.arch="aarch64|amd64|armv7" \
+    io.hass.arch="aarch64|amd64" \
     org.opencontainers.image.source="https://github.com/dnviti/tesla-api-key-homeassistant" \
     org.opencontainers.image.description="Tesla Fleet public key Home Assistant add-on"
 
