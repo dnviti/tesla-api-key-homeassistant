@@ -33,7 +33,7 @@ Manual steps:
 The container image is built by GitHub Actions and published to GitHub Container Registry as:
 
 ```text
-ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.2
+ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.3
 ```
 
 Home Assistant pulls this prebuilt image from the `image` setting in the add-on configuration.
@@ -42,7 +42,12 @@ Home Assistant pulls this prebuilt image from the `image` setting in the add-on 
 
 During Tesla Fleet setup, Home Assistant asks you to host the public key shown in the setup flow. Paste that public key into this add-on configuration as `key_pem`.
 
-Use the add-on configuration code editor:
+Use Home Assistant's add-on configuration YAML editor:
+
+1. Open the **Configuration** tab for this add-on.
+2. Open the three-dot menu in the configuration card.
+3. Select **Edit in YAML**.
+4. Paste the key as a YAML block:
 
 ```yaml
 key_pem: |
@@ -53,7 +58,7 @@ key_pem: |
 
 This should be the public key shown by the Tesla Fleet integration, not the private `tesla_fleet.key` file.
 
-The add-on intentionally uses Home Assistant's raw configuration/code editor because the documented add-on schema types do not provide a textarea control. If Home Assistant rewrites the value as folded YAML (`key_pem: >-`) or wraps the base64 body, the add-on normalizes it back to valid PEM format when it starts.
+The documented Home Assistant add-on schema types do not provide a textarea control, and `schema: false` does not reliably persist add-on options. Use **Edit in YAML** instead of the single-line form field. If Home Assistant rewrites the value as folded YAML (`key_pem: >-`) or wraps the base64 body, the add-on normalizes it back to valid PEM format when it starts.
 
 The add-on exposes HTTP port `80` from the container. By default Home Assistant maps it to host port `8085`, so the local endpoint is:
 

@@ -1,7 +1,6 @@
 configuration:
   key_pem:
     name: Tesla public key PEM
-    description: Paste the public key shown during Tesla Fleet setup. Do not paste the private tesla_fleet.key file.
+    description: Use the configuration card menu and choose Edit in YAML before pasting the Tesla Fleet public key. Do not paste the private tesla_fleet.key file.
 network:
   80/TCP: Tesla Fleet public key HTTP endpoint
-

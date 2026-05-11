@@ -1,5 +1,5 @@
 name: Tesla Fleet Public Key
-version: "1.0.2"
+version: "1.0.3"
 slug: tesla_fleet_public_key
 description: Serve the Tesla Fleet public key at the required well-known URL.
 url: https://github.com/dnviti/tesla-api-key-homeassistant
@@ -19,4 +19,5 @@ options:
     -----BEGIN PUBLIC KEY-----
     paste-the-public-key-shown-by-home-assistant-here
     -----END PUBLIC KEY-----
-schema: false
+schema:
+  key_pem: str

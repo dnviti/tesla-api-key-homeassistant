@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- Restore schema-backed `key_pem` persistence.
+- Document the Home Assistant **Edit in YAML** workflow instead of `schema: false`.
+
 ## 1.0.2
 
 - Switch configuration to Home Assistant's raw configuration/code editor.
