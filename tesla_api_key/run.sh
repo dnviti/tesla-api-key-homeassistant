@@ -22,15 +22,22 @@ KEY_PEM_ONE_LINE="$(
         sed 's/[[:space:]][[:space:]]*/ /g; s/^ //; s/ $//'
 )"
 
-if [[ "${KEY_PEM_ONE_LINE}" != *"-----BEGIN PUBLIC KEY-----"* || \
-      "${KEY_PEM_ONE_LINE}" != *"-----END PUBLIC KEY-----"* ]]; then
+KEY_PEM_COMPACT="$(
+    printf '%s' "${KEY_PEM_ONE_LINE}" |
+        sed 's/\\r//g; s/\\n//g' |
+        tr -d '[:space:]'
+)"
+BEGIN_MARKER="-----BEGINPUBLICKEY-----"
+END_MARKER="-----ENDPUBLICKEY-----"
+
+if [[ "${KEY_PEM_COMPACT}" != *"${BEGIN_MARKER}"* || \
+      "${KEY_PEM_COMPACT}" != *"${END_MARKER}"* ]]; then
     bashio::log.fatal "key_pem does not look like a PEM public key. Do not paste the private tesla_fleet.key file."
     exit 1
 fi
 
-KEY_BODY="${KEY_PEM_ONE_LINE#*-----BEGIN PUBLIC KEY-----}"
-KEY_BODY="${KEY_BODY%%-----END PUBLIC KEY-----*}"
-KEY_BODY="$(printf '%s' "${KEY_BODY}" | tr -d '[:space:]')"
+KEY_BODY="${KEY_PEM_COMPACT#*${BEGIN_MARKER}}"
+KEY_BODY="${KEY_BODY%%${END_MARKER}*}"
 
 if [[ -z "${KEY_BODY}" || ! "${KEY_BODY}" =~ ^[A-Za-z0-9+/=]+$ ]]; then
     bashio::log.fatal "key_pem has an invalid PEM body. Paste only the Tesla Fleet public key."

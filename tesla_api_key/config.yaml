@@ -1,5 +1,5 @@
 name: Tesla Fleet Public Key
-version: "1.0.1"
+version: "1.0.2"
 slug: tesla_fleet_public_key
 description: Serve the Tesla Fleet public key at the required well-known URL.
 url: https://github.com/dnviti/tesla-api-key-homeassistant
@@ -15,6 +15,8 @@ ports:
 ports_description:
   80/tcp: Tesla Fleet public key HTTP endpoint
 options:
-  key_pem: ""
-schema:
-  key_pem: str
+  key_pem: |
+    -----BEGIN PUBLIC KEY-----
+    paste-the-public-key-shown-by-home-assistant-here
+    -----END PUBLIC KEY-----
+schema: false
