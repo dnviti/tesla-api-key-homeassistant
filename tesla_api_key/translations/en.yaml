@@ -2,5 +2,8 @@ configuration:
   key_pem:
     name: Tesla public key PEM
     description: Use the configuration card menu and choose Edit in YAML before pasting the Tesla Fleet public key. Do not paste the private tesla_fleet.key file.
+  homeassistant_url:
+    name: Home Assistant upstream URL
+    description: Internal URL nginx proxies all non-key requests to. Keep the default unless your Home Assistant Core is reachable at a different internal origin.
 network:
   80/TCP: Tesla Fleet public key HTTP endpoint

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- Proxy all non-key requests to the configured Home Assistant upstream.
+- Add `homeassistant_url` configuration with a default internal Home Assistant URL.
+
 ## 1.0.3
 
 - Restore schema-backed `key_pem` persistence.

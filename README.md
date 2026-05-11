@@ -33,7 +33,7 @@ Manual steps:
 The container image is built by GitHub Actions and published to GitHub Container Registry as:
 
 ```text
-ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.3
+ghcr.io/dnviti/tesla-api-key-homeassistant:1.0.4
 ```
 
 Home Assistant pulls this prebuilt image from the `image` setting in the add-on configuration.
@@ -54,6 +54,7 @@ key_pem: |
   -----BEGIN PUBLIC KEY-----
   paste-the-public-key-shown-by-home-assistant-here
   -----END PUBLIC KEY-----
+homeassistant_url: http://homeassistant.local.hass.io:8123
 ```
 
 This should be the public key shown by the Tesla Fleet integration, not the private `tesla_fleet.key` file.
@@ -65,6 +66,35 @@ The add-on exposes HTTP port `80` from the container. By default Home Assistant 
 ```text
 http://homeassistant.local:8085/.well-known/appspecific/com.tesla.3p.public-key.pem
 ```
+
+## Use the Original Home Assistant URL
+
+The add-on's nginx serves the Tesla key path locally and proxies every other request to `homeassistant_url`.
+
+Default upstream:
+
+```yaml
+homeassistant_url: http://homeassistant.local.hass.io:8123
+```
+
+To make the key available on the same public URL as Home Assistant, point your public reverse proxy, router, or tunnel at this add-on's mapped host port instead of Home Assistant Core directly. With the default port mapping, route public traffic to:
+
+```text
+http://HOME_ASSISTANT_HOST:8085
+```
+
+Then these two URLs are handled by the add-on:
+
+```text
+https://yourdomain.com/.well-known/appspecific/com.tesla.3p.public-key.pem
+https://yourdomain.com/
+```
+
+The first URL returns the Tesla public key. The second is proxied internally to Home Assistant Core.
+
+Do not bind this add-on to host port `8123` while Home Assistant Core is already using that port. Change the external reverse proxy target instead.
+
+Because this add-on becomes a reverse proxy for Home Assistant, Home Assistant Core may require `use_x_forwarded_for` and `trusted_proxies` in `configuration.yaml`. If Home Assistant logs a reverse proxy or trusted proxy error, add the proxy IP shown in that log, following the [Home Assistant HTTP integration documentation](https://www.home-assistant.io/integrations/http/#reverse-proxies).
 
 ## Public HTTPS Requirement
 
